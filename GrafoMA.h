@@ -13,7 +13,8 @@
 
 #ifndef GRAFOMA_H
 #define GRAFOMA_H
-#include "Grafo.h"
+#include <vector>
+using namespace std;
 
 class GrafoMA  {
 public:
@@ -21,9 +22,11 @@ public:
     typedef int Vertice;
     
 
-    
-    GrafoMA();
+    //CONSTRUCTOR
+    GrafoMA(int M);  
 
+    
+    //DESTRUCTOR
     ~GrafoMA();
 
     /*	Efecto: Vacía el Grafo.
@@ -41,7 +44,7 @@ public:
     Requiere: Grafo inicializado.
     Modifica: El Grafo.
      */
-    Vertice* agregarVertice(char etiqueta);
+    Vertice agregarVertice(char etiqueta);
 
     /*	Efecto: Elimina el vértice de entrada.
     Requiere: Vértice aislado y válido en el grafo.
@@ -58,7 +61,7 @@ public:
     /*	Efecto: Retorna la etiqueta del vértice de entrada.
     Requiere: Vértice válido en el grafo.
      */
-    char etiqueta(Vertice vertice);
+    char* etiqueta(Vertice vertice);
 
     /*	Efecto: “Crea” una arista que contiene el peso y relaciona los 2 vértices de entrada.
     Requiere: Ambos vértices de entrada válidos en el grafo.
@@ -66,7 +69,7 @@ public:
      */
     void agregarArista(Vertice vertice1, Vertice vertice2, int peso);
 
-    /*	Efecto: “Crea” una arista que contiene el peso y relaciona los 2 vértices de entrada.
+    /*	Efecto: Elimina la arista entre los 2 vertices de entrada.
     Requiere: Ambos vértices de entrada válidos en el grafo.
     Modifica: El Grafo.
      */
@@ -89,7 +92,7 @@ public:
     bool sonAdyacentes(Vertice vertice1, Vertice vertice2);
 
     /*	Efecto: Retorna el “primer” vértice del Grafo.
-    Requiere: Grafo inicializado.
+    Requiere: Grafo inicializado y grafo con vertices.
      */
     Vertice primerVertice();
 
@@ -120,9 +123,9 @@ public:
 
 private:
 
-    bool* MatrizAdyacencia;
-    int* vectorEtiquetas;
-    
+    vector<vector<int>> matrizAdyacencia;
+    vector<char*> vectorEtiquetas;
+    int ultimo;
 };
 
 #endif /* GRAFOMA_H */
